@@ -1,13 +1,13 @@
 // Define SVG attributes
 var width = parseInt(d3.select('#scatter')
     .style("width"));
-//size of the emtire graphic 
+
 var height = width * 2/3;
-var margin = 10;
+var margin = 20;
 var labelArea = 110;
 var padding = 45;
 
-// Create SVG object check the 
+// Create SVG object 
 var svg = d3.select("#scatter")
     .append("svg")
     .attr("width", width)
@@ -64,6 +64,7 @@ yText.attr("transform",`translate(
     )rotate(-90)`
     );
 
+// y-axis (left) ______________________________
 // Build yText details (css class)
 yText .append("text")
     .attr("y", -22)
@@ -182,7 +183,7 @@ function visualize (csvData) {
 
     // Calculate X and Y tick counts
     function tickCount() {
-      if (width <= 530) {
+      if (width <= 500) {
          xAxis.ticks(5);
          yAxis.ticks(5);
       }
@@ -204,7 +205,7 @@ function visualize (csvData) {
 
     svg.append("g")
         .call(yAxis)
-        .attr("class", "yAxis")
+        .attr("class", "xAxis")
         .attr("transform", `translate(
             ${margin + labelArea}, 
             0 )`
@@ -243,6 +244,7 @@ function visualize (csvData) {
             .append("text")
             .attr("font-size", cRadius)
             .attr("class", "stateText")
+
             .attr("dx", function(d) {
                return xScale(d[currentX]);
             })
